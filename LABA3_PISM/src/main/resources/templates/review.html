@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Отзывы</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+
+<div class="container mt-5">
+    <h1>Отзывы</h1>
+    <div th:each="el:${reviews}" class="alert alert-info mt-2">
+        <h3 th:text="${el.title}"/>
+        <p th:text="${el.anons}"/>
+        <a th:href="'/mainreviews/'+${el.id}" class="btn btn-warning">Детальнее</a>
+    </div>
+</div>
+
+<div th:insert="blocks/footer :: footer"/>
+</body>
+</html>

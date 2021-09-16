@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Заявки</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+
+<div class="container mt-5">
+  <div th:each="el:${request}" class="alert alert-info mt-2">
+    <h3 th:text="${el.title}"/>
+    <p th:text="${el.full_text}"/>
+
+    <form th:action="'/mainrequests/'+${el.id}+'/remove'" method="post">
+      <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+      <button class="btn btn-warning" type="submit">Удалить</button>
+    </form>
+  </div>
+</div>
+
+<div th:insert="blocks/footer :: footer"/>
+</body>
+</html>

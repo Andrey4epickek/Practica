@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Отзывы</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"/>
+
+<div class="container mt-5 mb-5">
+    <h1>Редактирвоание отзыва</h1>
+    <div th:each="el:${review}">
+    <form method="post">
+        <input type="text" th:value="${el.title}" name="title" placeholder="Введите исполнителя" class="form-control"><br>
+        <input type="text" th:value="${el.anons}" name="anons" placeholder="Введите  название филармонии" class="form-control"><br>
+        <textarea type="text"  name="full_text" placeholder="Введите полный отзыв" class="form-control" th:text="${el.full_text}"/><br>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit" class="btn btn-success">Обновить</button>
+    </form>
+    </div>
+</div>
+
+<div th:insert="blocks/footer :: footer"/>
+</body>
+</html>
